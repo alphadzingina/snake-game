@@ -1,7 +1,13 @@
-from turtle import Turtle
+from pickletools import UP_TO_NEWLINE
+from tkinter import RIGHT
+from turtle import Turtle, down
 
 STARTING_POSITIONS = [(0, 0), (-20, 0), (-40, 0)]
 MOVE_DISTANCE = 20
+UP = 90
+DOWN = 270
+LEFT = 180
+RIGHT = 0
 
 class Snake:
 
@@ -27,13 +33,17 @@ class Snake:
         self.head.forward(MOVE_DISTANCE)
 
     def up(self):
-        self.head.setheading(90)
+        if self.head.heading() != DOWN:
+            self.head.setheading(UP)
 
     def down(self):
-        self.head.setheading(270)
+        if self.head.heading() != UP:
+            self.head.setheading(DOWN)
 
     def left(self):
-        self.head.setheading(180)
+        if self.head.heading() != RIGHT:
+            self.head.setheading(LEFT)
 
     def right(self):
-        self.head.setheading(0)
+        if self.head.heading() != LEFT:
+            self.head.setheading(RIGHT)
